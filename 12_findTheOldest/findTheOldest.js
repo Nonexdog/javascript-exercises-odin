@@ -52,8 +52,11 @@ const people3 = [
 
 const findTheOldest = function(people) {
   const sortedPeople = people.sort((person1, person2) => {
-    const p1Age = person1.yearOfDeath - person1.yearOfBirth;
-    const p2Age = person2.yearOfDeath - person2.yearOfBirth;
+    const thisDate = new Date();
+    const thisYear = thisDate.getFullYear();
+    console.log(thisYear);
+    const p1Age = person1.yearOfDeath ? person1.yearOfDeath - person1.yearOfBirth : thisYear - person1.yearOfBirth;
+    const p2Age = person2.yearOfDeath ? person2.yearOfDeath - person2.yearOfBirth : thisYear - person2.yearOfBirth;
     return p2Age - p1Age;
   })
 
@@ -61,6 +64,8 @@ const findTheOldest = function(people) {
 };
 
 console.log(findTheOldest(people1));
+console.log(findTheOldest(people2));
+console.log(findTheOldest(people3));
 
 // This function should sort all of the items in the list based off of the death - birth and return the first item. 
 // If a death doesn't exist, use Date 
